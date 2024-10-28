@@ -20,9 +20,11 @@ import pytest
 import numpy as np
 import sys
 import os
+
 # Add working directory to path. Python doesn't like relative imports in scripts, otherwise it'd be best to use that
 sys.path.append(os.getcwd())
-from basic_sort_UNIQUE_SUFFIX.int_sort import bubble, quick, insertion
+from basic_sort_UNIQUE_SUFFIX.int_sort import bubble, quick, insertion  # noqa: E402
+
 
 def is_sorted(int_list):
     """
@@ -32,23 +34,25 @@ def is_sorted(int_list):
     for x in range(len(int_list) - 1):
         if int_list[x] > int_list[x + 1]:
             return False
-    
+
     return True
+
 
 @pytest.fixture
 def int_lists():
     # fixture which creates testing data for all tests
-    return [[3,2,1],
-	        [1,1,1],
-			np.random.randint(low=-10, high=200, size=5)] 
-    
+    return [[3, 2, 1], [1, 1, 1], np.random.randint(low=-10, high=200, size=5)]
+
+
 def test_bubble(int_lists):
     for int_list in int_lists:
         assert is_sorted(bubble(int_list))
 
+
 def test_quick(int_lists):
     for int_list in int_lists:
         assert is_sorted(quick(int_list))
+
 
 def test_insertion(int_lists):
     for int_list in int_lists:
