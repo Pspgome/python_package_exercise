@@ -1,10 +1,25 @@
-# See https://pre-commit.com for more information
-# See https://pre-commit.com/hooks.html for more hooks
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.2.0
+  # Enforce a max file size
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
     hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
-    -   id: check-yaml
-    -   id: check-added-large-files
+      - id: check-added-large-files
+        args: ['--maxkb=500']  # Set max file size to 500 KB (adjustable)
+
+  # Run the black code formatter
+  - repo: https://github.com/psf/black
+    rev: 23.9.1  # Latest version, or specify another
+    hooks:
+      - id: black
+
+  # Run flake8 for linting
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.1.0  # Latest version, or specify another
+    hooks:
+      - id: flake8
+
+  # Detect presence of AWS credentials
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: detect-private-key
