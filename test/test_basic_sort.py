@@ -18,8 +18,13 @@
 
 import pytest
 import numpy as np
+import sys
+import os
+sys.path.append(os.getcwd() + "/basic_sort_UNIQUE_SUFFIX")
+print(sys.path)
+from int_sort import bubble, quick, insertion
 
-def is_sorted(self, int_list):
+def is_sorted(int_list):
     """
     Testing oracle.
     """
