@@ -23,6 +23,11 @@ def is_sorted(self, int_list):
     """
     Testing oracle.
     """
+    # Iterate through the list, checking each element is greater than or equal to the previous
+    for x in range(len(int_list) - 1):
+        if int_list[x] > int_list[x + 1]:
+            return False
+    
     return True
 
 @pytest.fixture
@@ -33,10 +38,13 @@ def int_lists():
 			np.random.randint(low=-10, high=200, size=5)] 
     
 def test_bubble(int_lists):
-    assert True
+    for int_list in int_lists:
+        assert is_sorted(bubble(int_list))
 
 def test_quick(int_lists):
-    assert True
+    for int_list in int_lists:
+        assert is_sorted(quick(int_list))
 
 def test_insertion(int_lists):
-    assert True
+    for int_list in int_lists:
+        assert is_sorted(insertion(int_list))
