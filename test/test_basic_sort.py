@@ -20,9 +20,9 @@ import pytest
 import numpy as np
 import sys
 import os
-sys.path.append(os.getcwd() + "/basic_sort_UNIQUE_SUFFIX")
-print(sys.path)
-from int_sort import bubble, quick, insertion
+# Add working directory to path. Python doesn't like relative imports in scripts, otherwise it'd be best to use that
+sys.path.append(os.getcwd())
+from basic_sort_UNIQUE_SUFFIX.int_sort import bubble, quick, insertion
 
 def is_sorted(int_list):
     """
