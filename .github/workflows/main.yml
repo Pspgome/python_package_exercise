@@ -35,7 +35,7 @@ jobs:
     needs: linting
     strategy:
       matrix:
-        python-version: [3.9, 3.10]
+        python-version: [3.9, 3.11]
     
     steps:
     - uses: actions/checkout@v3
@@ -57,7 +57,7 @@ jobs:
     needs: test
     strategy:
       matrix:
-        python-version: [3.9, 3.10]
+        python-version: [3.9, 3.11]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
