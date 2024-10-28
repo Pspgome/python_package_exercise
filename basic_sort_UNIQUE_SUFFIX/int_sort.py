@@ -23,20 +23,56 @@ This module sorts lists of integers...
 
 def bubble(int_list):
     """
-    bubble docstring
+    Sorts a list of integers in ascending order using the bubble sort algorithm.
+
+    Parameters:
+    int_list (list): List of integers to sort.
+
+    Returns:
+    list: Sorted list of integers.
     """
-    print("bubble sort")
+    n = len(int_list)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if int_list[j] > int_list[j + 1]:
+                int_list[j], int_list[j + 1] = int_list[j + 1], int_list[j]
+    return int_list
 
 
 def quick(int_list):
     """
-    qsort docstring
+    Sorts a list of integers in ascending order using the quick sort algorithm.
+
+    Parameters:
+    int_list (list): List of integers to sort.
+
+    Returns:
+    list: Sorted list of integers.
     """
-    print("quick sort")
+    if len(int_list) <= 1:
+        return int_list
+    pivot = int_list[len(int_list) // 2]
+    left = [x for x in int_list if x < pivot]
+    middle = [x for x in int_list if x == pivot]
+    right = [x for x in int_list if x > pivot]
+    return quick(left) + middle + quick(right)
 
 
 def insertion(int_list):
     """
-    insertion docstring
+    Sorts a list of integers in ascending order using the insertion sort algorithm.
+
+    Parameters:
+    int_list (list): List of integers to sort.
+
+    Returns:
+    list: Sorted list of integers.
     """
-    print("insertion sort")
+    for i in range(1, len(int_list)):
+        key = int_list[i]
+        j = i - 1
+        while j >= 0 and int_list[j] > key:
+            int_list[j + 1] = int_list[j]
+            j -= 1
+        int_list[j + 1] = key
+    return int_list
